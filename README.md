@@ -1,61 +1,222 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🔐 Laravel Social Authentication
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A complete Laravel application demonstrating social login integration with multiple providers including Google, GitHub, Discord, Facebook, and more using Laravel Socialite.
 
-## About Laravel
+## ✨ Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- 🚀 **Multiple Social Providers**: Google, GitHub, Discord, Facebook, Twitter, LinkedIn
+- 👥 **User Management**: Automatic user creation and linking
+- 🎨 **Clean UI**: Beautiful login interface with provider buttons
+- 🔄 **Account Linking**: Link multiple social accounts to one user
+- ⚡ **Fast Setup**: Easy configuration and deployment
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Technologies Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel 10+**
+- **Laravel Socialite**
+- **MySQL/PostgreSQL**
+- **Tailwind CSS**
+- **Blade Templates**
 
-## Learning Laravel
+## 📋 Prerequisites
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.1 or higher
+- Composer
+- Node.js & NPM
+- MySQL/PostgreSQL database
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Quick Start
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Clone the Repository
 
-## Laravel Sponsors
+```bash
+git clone https://github.com/hilalahmad0101/social-auth-laravel.git
+cd social-auth-laravel
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 2. Install Dependencies
 
-### Premium Partners
+```bash
+# Install PHP dependencies
+composer install
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Install NPM dependencies
+npm install && npm run dev
+```
 
-## Contributing
+### 3. Environment Setup
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+# Copy environment file
+cp .env.example .env
 
-## Code of Conduct
+# Generate application key
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Database Configuration
 
-## Security Vulnerabilities
+Update your `.env` file with database credentials:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=social_auth_laravel
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-## License
+Run migrations:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate
+```
+
+### 5. Social Provider Configuration
+
+Add your social provider credentials to `.env`:
+
+```env
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_REDIRECT_URI=http://localhost:8000/auth/google/callback
+
+# GitHub OAuth
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GITHUB_REDIRECT_URI=http://localhost:8000/auth/github/callback
+
+# Discord OAuth
+DISCORD_CLIENT_ID=your_discord_client_id
+DISCORD_CLIENT_SECRET=your_discord_client_secret
+DISCORD_REDIRECT_URI=http://localhost:8000/auth/discord/callback
+
+# Facebook OAuth
+FACEBOOK_CLIENT_ID=your_facebook_client_id
+FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
+FACEBOOK_REDIRECT_URI=http://localhost:8000/auth/facebook/callback
+
+# Linkedin OAuth
+LINKEDIN_CLIENT_ID=linkedin_client_id
+LINKEDIN_CLIENT_SECRET=linkedin_client_secret
+LINKEDIN_REDIRECT_URI=http://localhost:8000/auth/facebook/callback
+```
+
+### 6. Run the Application
+
+```bash
+php artisan serve
+```
+
+Visit `http://localhost:8000` and start using social authentication!
+
+## 🔧 Setting Up Social Providers
+
+### Google OAuth Setup
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing
+3. Enable Google+ API
+4. Create OAuth 2.0 credentials
+5. Add authorized redirect URIs
+
+### GitHub OAuth Setup
+
+1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
+2. Create a new OAuth App
+3. Set Authorization callback URL to `http://your-domain.com/auth/github/callback`
+
+### Discord OAuth Setup
+
+1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
+2. Create a new application
+3. Go to OAuth2 settings
+4. Add redirect URI: `http://your-domain.com/auth/discord/callback`
+
+### Facebook OAuth Setup
+
+1. Go to [Facebook for Developers](https://developers.facebook.com/)
+2. Create a new app
+3. Add Facebook Login product
+4. Configure Valid OAuth Redirect URIs
+
+## 📁 Project Structure
+
+```
+├── app/
+│   ├── Http/Controllers/Auth/
+│   │   ├── GoogleAuthController.php
+│   │   ├── GitHubController.php
+│   │   ├── DiscordController.php
+│   │   └── FacebookController.php
+│   └── Models/
+│       └── User.php
+├── database/
+│   └── migrations/
+├── resources/
+│   └── views/
+│       ├── auth/
+│       └── dashboard/
+├── routes/
+│   └── web.php
+└── config/
+    └── services.php
+```
+
+## 🎯 How It Works
+
+1. **User clicks social login button** → Redirects to provider's OAuth page
+2. **User authorizes the app** → Provider redirects back with authorization code
+3. **App exchanges code for access token** → Gets user information from provider
+4. **User creation/linking** → Creates new user or links to existing account
+5. **Authentication** → Logs user into the application
+
+## 🔐 Security Features
+
+- ✅ Secure Token Handling
+- ✅ Account Linking Prevention for Security
+
+## 🎨 UI Features
+
+- Responsive design with Tailwind CSS
+- Error handling and user feedback
+- Clean and modern interface
+
+## 📱 Screenshots
+
+*Add screenshots of your application here*
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙋‍♂️ Author
+
+**Hilal Ahmad**
+- GitHub: [@hilalahmad0101](https://github.com/hilalahmad0101)
+- LinkedIn: [Connect with me](https://linkedin.com/in/hilal-ahmad)
+
+## ⭐ Show Your Support
+
+Give a ⭐ if this project helped you!
+
+## 📞 Support
+
+If you have any questions or need help, feel free to:
+- Open an issue on GitHub
+- Contact me on LinkedIn
+- Send an email
+
+---
+
+**Happy Coding! 🚀**
